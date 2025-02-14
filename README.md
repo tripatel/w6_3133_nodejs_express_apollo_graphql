@@ -126,7 +126,7 @@ mutation($id: ID!, $name: String!, $directorName: String!, $productionHouse: Str
     production_house
   }
 }
-
+** Variables **
 {
   "id": "67ae7dcfa052c72aef43187e",
   "name": "The Dark Knight",
