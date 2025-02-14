@@ -86,3 +86,53 @@ mutation {
   }
 }
 ```
+
+### More queries
+```
+query Movies{
+  __typename
+  movies {
+    __typename
+    id
+    name
+    production_house
+    rating
+    release_date
+  }
+
+  a: movie(id: "67abe736d20bfd54ba53ee95") {
+     ...MovieFields
+  }
+
+  b: movie(id: "67ae7dcfa052c72aef43187e") {
+   ...MovieFields
+  }
+}
+
+fragment MovieFields on Movie{
+  id
+  name
+  director_name
+}
+```
+```
+mutation($id: ID!, $name: String!, $directorName: String!, $productionHouse: String!, $releaseDate: String!, $rating: Float!) {
+  updateMovie(id: $id, name: $name, director_name: $directorName, production_house: $productionHouse, release_date: $releaseDate, rating: $rating) {
+    id
+    name
+    director_name
+    rating
+    release_date
+    production_house
+  }
+}
+
+{
+  "id": "67ae7dcfa052c72aef43187e",
+  "name": "The Dark Knight",
+  "directorName": "Christopher Nolan",
+  "productionHouse": "Warner Bros.",
+  "releaseDate": "2008-07-18",
+  "rating": 9.5,
+}
+```
